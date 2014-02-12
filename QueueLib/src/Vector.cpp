@@ -15,6 +15,8 @@ Vector::Vector(unsigned int n)
 Vector::Vector(const double* const array, const unsigned int nArray)
 {
 	//TODO: Implement
+	array_ = new double[nArray];
+	size_ = nArray;
 }
 Vector::~Vector()
 {

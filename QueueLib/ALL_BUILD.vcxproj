@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGUID>{F2EEFF8A-85B7-4C13-AF28-9068C57B5923}</ProjectGUID>
+    <ProjectGUID>{87425D62-3300-4F80-BB83-F643264E5F86}</ProjectGUID>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
     <ProjectName>ALL_BUILD</ProjectName>
@@ -199,16 +199,16 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="F:/Programacion/EjercicioAscentio/QueueLib/bin/Queue.vcxproj">
-      <Project>9BED091E-F039-48EC-92F9-06455471A181</Project>
+      <Project>EB763C65-3356-47A2-A747-0E3AB20FF352</Project>
     </ProjectReference>
     <ProjectReference Include="F:/Programacion/EjercicioAscentio/QueueLib/test/test_queue/bin/QueueTest.vcxproj">
-      <Project>404E6176-2865-443B-973C-7C0D73A8239A</Project>
+      <Project>3AD36DAC-D864-4DCC-B8FF-0B54110E0C47</Project>
     </ProjectReference>
     <ProjectReference Include="F:/Programacion/EjercicioAscentio/QueueLib/test/test_vector/bin/VectorTest.vcxproj">
-      <Project>EB0049DB-C9F1-4DBF-9EE6-B0C5C726081B</Project>
+      <Project>B8DA30C5-45B1-4D09-BA2B-30F694A271D3</Project>
     </ProjectReference>
     <ProjectReference Include="F:/Programacion/EjercicioAscentio/QueueLib/ZERO_CHECK.vcxproj">
-      <Project>89BF679A-E7A5-4A02-A928-299798D5EF23</Project>
+      <Project>8D7F1BCF-56CB-474B-8576-8C930F55BCA5</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

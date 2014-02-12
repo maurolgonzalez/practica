@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGUID>{07997533-7D36-4730-8B8A-6C4A278CF445}</ProjectGUID>
+    <ProjectGUID>{3E8C1790-0741-4513-8961-A3D60FD9F3FF}</ProjectGUID>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
     <ProjectName>RUN_TESTS</ProjectName>

@@ -67,7 +67,7 @@ void vectortest::testAddition()
     Vector vector;
     
     if (add_vectors_defined == 0){
-        vector = v + w;
+        //vector = v + w;
         array = getArrayAux(vector);
     } else if (add_vectors_defined == 1){
         vector = addition(v, w);

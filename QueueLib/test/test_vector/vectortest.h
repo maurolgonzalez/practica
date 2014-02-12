@@ -27,7 +27,7 @@ public:
         double* array;
         switch(array_getter_defined){
             case 0:
-                v.getArray(array);
+                //v.getArray(array);
                 break;
             case 1: 
                 array = v.getArray();

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGUID>{89BF679A-E7A5-4A02-A928-299798D5EF23}</ProjectGUID>
+    <ProjectGUID>{8D7F1BCF-56CB-474B-8576-8C930F55BCA5}</ProjectGUID>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
     <ProjectName>ZERO_CHECK</ProjectName>

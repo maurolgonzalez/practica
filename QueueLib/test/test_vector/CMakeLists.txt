@@ -15,7 +15,7 @@ FILE(GLOB TEST_SRCS "${PROJECT_DIR}/test/test_vector/*.cpp" AND "${PROJECT_DIR}/
 ADD_EXECUTABLE(${TEST_EXECUTABLE2} ${TEST_SRCS} )
 
 # link libraries (internals / externals)
-FILE(GLOB LIBRARIES "${PROJECT_DIR}/lib/*.so")
+FILE(GLOB LIBRARIES "${PROJECT_DIR}/lib/*.dll")
 TARGET_LINK_LIBRARIES(${TEST_EXECUTABLE2} ${LIBRARIES} 
     ${LIBRARY_PATHS}
 	cppunit
