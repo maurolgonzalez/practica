@@ -12,6 +12,10 @@ Vector::Vector(unsigned int n)
 	size_ = n;
 }
 
+Vector::Vector(const double* const array, const unsigned int nArray)
+{
+	//TODO: Implement
+}
 Vector::~Vector()
 {
 	if(array_ != NULL)
@@ -38,4 +42,25 @@ void Vector::set(double elem, unsigned int pos)
 	}
 
 
+}
+
+double* Vector::getArray() const
+{
+	return array_;
+}
+
+void Vector::setArray(const double* const array, const unsigned int nArray)
+{
+	//TODO: Implement
+}
+
+Vector addition(const Vector& v, const Vector& w)
+{
+	//TODO: Implement
+	return Vector();
+}
+
+double dotProduct(const Vector& v, const Vector& w)
+{	//TODO: Implement
+	return 0.0;
 }

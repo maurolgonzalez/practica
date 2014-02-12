@@ -54,9 +54,9 @@ class Vector
      * @return the vector v + w
      * @warning CHOOSE ONE AND ONLY ONE OF THE DEFINITIONS BELOW
      */
-    friend Vector operator+(const Vector& v, const Vector& w);
+    //friend Vector operator+(const Vector& v, const Vector& w);
     //or
-    Vector& operator+(const Vector& v);
+    //Vector& operator+(const Vector& v);
     //or
     friend Vector addition(const Vector& v, const Vector& w);
 
@@ -75,7 +75,7 @@ class Vector
      * @return ??
      * @warning CHOOSE ONE AND ONLY ONE OF THE DEFINITIONS BELOW
      */
-    void getArray(double* array /*in this pointer the inner array is stored*/) const;
+    //void getArray(double* array /*in this pointer the inner array is stored*/) const;
     //or
     double* getArray() const;
 
