@@ -118,7 +118,13 @@ private:
 
     double* array_;
     unsigned int size_;
-    //add here whatever you want
+    
+	//add here whatever you want
+	static const unsigned int initialSize_ = 10;
+	// This is the factor used when need resize the array
+	static const unsigned int multiplierResize_ = 10;
+
+	void resize();
 };
 
 #endif	/* VECTOR_H */
