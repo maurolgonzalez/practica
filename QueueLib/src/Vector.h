@@ -54,11 +54,11 @@ class Vector
      * @return the vector v + w
      * @warning CHOOSE ONE AND ONLY ONE OF THE DEFINITIONS BELOW
      */
-    //friend Vector operator+(const Vector& v, const Vector& w);
+    friend Vector operator+(const Vector& v, const Vector& w);
     //or
     //Vector& operator+(const Vector& v);
     //or
-    friend Vector addition(const Vector& v, const Vector& w);
+    //friend Vector addition(const Vector& v, const Vector& w);
 
     /**
      * Addition of matrices
@@ -110,14 +110,23 @@ class Vector
      * @param (pos) position in array
      * @return vector[pos]
      */
-    double get(unsigned int pos);
+    double get(unsigned int pos) const;
 
     //add here whatever you want
     
+    /**
+     * Insert an element on last position of array
+     * @param (elem) element to insert
+     */
+    void push_back(double elem);
+
+
 private:
 
     double* array_;
     unsigned int size_;
+    // Max number of element that can be allocated before need resize
+    unsigned int capacity_;
     
 	//add here whatever you want
 	static const unsigned int initialSize_ = 10;

@@ -67,10 +67,10 @@ void vectortest::testAddition()
     Vector vector;
     
     if (add_vectors_defined == 0){
-        //vector = v + w;
+        vector = v + w;
         array = getArrayAux(vector);
     } else if (add_vectors_defined == 1){
-        vector = addition(v, w);
+        //vector = addition(v, w);
         array = getArrayAux(vector);
     }
     bool ans = true;
@@ -88,7 +88,7 @@ void vectortest::testDotProduct()
     Vector v(myArray_, nMyArray_);
     Vector w(mySecondArray_, nMyArray_);
     double ans = 0;
-    for (int i = 0; i < nMyArray_; i++){
+    for (unsigned int i = 0; i < nMyArray_; i++){
         ans += myArray_[i] * mySecondArray_[i];
     }
     
