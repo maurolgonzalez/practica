@@ -1,5 +1,5 @@
 #include "Vector.h"
-#include "stdlib.h"
+#include <sstream>  
 
 Vector::Vector()
 {
@@ -24,8 +24,8 @@ Vector::Vector(const double* const array, const unsigned int nArray)
 {
     array_ = NULL;
 	setArray(array, nArray);
-    //posLastElement_ = nArray -1;
 }
+
 Vector::~Vector()
 {
    // delete [] array_;	
@@ -78,14 +78,10 @@ double Vector::get(unsigned int pos) const
 {
     return array_[pos];
 }
-/*Vector addition(const Vector& v, const Vector& w)
-{
-	//TODO: Implement
-	return Vector();
-}*/
 
 Vector operator+(const Vector& v, const Vector& w)
 {
+    // Here i can throw an Exception instead add vectors with different size
     unsigned int maxSize = v.getSize() > w.getSize()? v.getSize() : w.getSize();
 
     Vector newVector(maxSize);
@@ -112,7 +108,33 @@ void Vector::push_back(double elem)
 
 }
 
+std::string Vector::toString()
+{
+    std::string result = "";
+    std::ostringstream s;
+
+    for(unsigned int i = 0; i < getSize(); i++)
+    {
+        s << get(i);
+        result += s.str();
+    }
+
+    return result;
+}
+
 double dotProduct(const Vector& v, const Vector& w)
-{	//TODO: Implement
-	return 0.0;
+{	
+    if(v.getSize() != w.getSize())
+    {
+        throw new std::exception("Length of vertors cannot be different for Dot Product");
+    }
+
+    double result = 0.0;
+
+    for(unsigned int i = 0; i < v.getSize(); i++)
+    {
+        result += v.get(i) * w.get(i);
+    }
+
+	return result;
 }
