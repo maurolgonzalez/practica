@@ -23,6 +23,7 @@ public:
      * Constructor
      * @param length is the size of the queue
      * @warning does this method have any sense?
+     * @Answer: This is not necessary, becouse the size of queue is changed dinamically with every push and pop.
      */
     Queue(unsigned int length);
     
@@ -35,6 +36,7 @@ public:
     /**
      * Destructor.
      * @warning should it be virtual?
+     * @Answer: It is not necessary, it is only important when the Queue class will be inherited by another class (not this case).
      */
     virtual ~Queue();
 
@@ -60,7 +62,7 @@ public:
     //or
     //void getArray(double *array);
     //or
-    Vector getVector();
+    Vector getVector() const;
 
     //add here whatever you want
     

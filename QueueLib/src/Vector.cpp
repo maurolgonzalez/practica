@@ -101,14 +101,13 @@ Vector operator+(const Vector& v, const Vector& w)
     return newVector;
 }
 
-void Vector::push_back(double elem)
+void Vector::push_back(const double elem)
 {
     if(size_  + 1 >= (capacity_))
     {
         resize();
     }
     array_[size_++] = elem;
-
 }
 
 double Vector::pop_front()
