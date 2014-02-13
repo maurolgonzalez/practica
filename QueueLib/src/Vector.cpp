@@ -41,9 +41,9 @@ void Vector::resize()
 	array_ = newArray;
 }
 
-void Vector::set(double elem, unsigned int pos)
+void Vector::set(double elem, unsigned int pos) //TODO: can do an insert?
 {    
-    array_[pos] = elem;
+    array_[pos] = elem;    
 }
 
 unsigned int Vector::getSize() const
@@ -112,13 +112,18 @@ std::string Vector::toString()
 {
     std::string result = "";
     std::ostringstream s;
+    s << "[";
 
     for(unsigned int i = 0; i < getSize(); i++)
     {
+        
         s << get(i);
-        result += s.str();
+        if(i != getSize() -1)
+            s << ", ";
+        
     }
-
+    s << "]";
+    result = s.str();
     return result;
 }
 

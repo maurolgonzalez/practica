@@ -30,6 +30,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZERO_CHECK", "ZERO_CHECK.vc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cppunit_dll", "cppunit-1.13.2\src\cppunit\cppunit_dll.vcxproj", "{6407D1BA-0C4D-4903-8BE8-728547FE1BBE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "test\Test.vcxproj", "{36894881-9ACD-4E35-8691-3483C5D7331F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -86,6 +88,14 @@ Global
 		{6407D1BA-0C4D-4903-8BE8-728547FE1BBE}.Release|Win32.Build.0 = Release|Win32
 		{6407D1BA-0C4D-4903-8BE8-728547FE1BBE}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
 		{6407D1BA-0C4D-4903-8BE8-728547FE1BBE}.RelWithDebInfo|Win32.Build.0 = Release|Win32
+		{36894881-9ACD-4E35-8691-3483C5D7331F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{36894881-9ACD-4E35-8691-3483C5D7331F}.Debug|Win32.Build.0 = Debug|Win32
+		{36894881-9ACD-4E35-8691-3483C5D7331F}.MinSizeRel|Win32.ActiveCfg = Release|Win32
+		{36894881-9ACD-4E35-8691-3483C5D7331F}.MinSizeRel|Win32.Build.0 = Release|Win32
+		{36894881-9ACD-4E35-8691-3483C5D7331F}.Release|Win32.ActiveCfg = Release|Win32
+		{36894881-9ACD-4E35-8691-3483C5D7331F}.Release|Win32.Build.0 = Release|Win32
+		{36894881-9ACD-4E35-8691-3483C5D7331F}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
+		{36894881-9ACD-4E35-8691-3483C5D7331F}.RelWithDebInfo|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
