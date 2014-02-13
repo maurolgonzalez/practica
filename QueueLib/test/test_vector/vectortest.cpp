@@ -53,7 +53,7 @@ void vectortest::testVector()
     }
     
     // delete the array just created
-    delete [] array;
+    delete [] array;	
     
     CPPUNIT_ASSERT(ans);
 }

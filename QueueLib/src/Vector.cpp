@@ -14,16 +14,11 @@ Vector::Vector(unsigned int n)
 
 Vector::Vector(const double* const array, const unsigned int nArray)
 {
-	//TODO: Implement
-	array_ = new double[nArray];
-	size_ = nArray;
+	setArray(array, nArray);
 }
 Vector::~Vector()
 {
-	if(array_ != NULL)
-	{
-		delete [] array_;
-	}
+   // delete [] array_;	
 }
 
 void Vector::resize()
@@ -53,7 +48,14 @@ double* Vector::getArray() const
 
 void Vector::setArray(const double* const array, const unsigned int nArray)
 {
-	//TODO: Implement
+    //TODO: Improve
+	array_ = new double[nArray];	
+	for(int i = 0; i < nArray; i++)
+	{
+		array_[i] = array[i];
+	}
+
+	size_ = nArray;
 }
 
 Vector addition(const Vector& v, const Vector& w)
