@@ -115,11 +115,16 @@ class Vector
     //add here whatever you want
     
     /**
-     * Insert an element on last position of array
+     * Insert an element on last position of vector
      * @param (elem) element to insert
      */
     void push_back(double elem);
 
+    /**
+     * Get first element and remove it from vector    
+     * @return first element
+     */
+    double pop_front();
 
 private:
 

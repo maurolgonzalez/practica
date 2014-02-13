@@ -111,6 +111,14 @@ void Vector::push_back(double elem)
 
 }
 
+double Vector::pop_front()
+{
+    double frontElement = array_[0];
+    array_++;
+    size_--;
+    return frontElement;
+}
+
 std::string Vector::toString()
 {
     std::string result = "";

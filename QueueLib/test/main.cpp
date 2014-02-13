@@ -7,8 +7,14 @@ int main()
     Vector v;
     for(int i =0; i < 25; i++)
     {       
-        v.push_back(i*1.33333);
+        v.push_back(i);
     }
+
+    
+
+    cout << v.pop_front() << endl;
+    cout << v.pop_front() << endl;
+    cout << v.pop_front() << endl;
 
     cout << v.toString();
 
