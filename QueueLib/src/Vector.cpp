@@ -1,6 +1,7 @@
 #include "Vector.h"
 #include <sstream>  
 
+// Constructors
 Vector::Vector()
 {
 	array_ = new double[initialSize_];
@@ -26,11 +27,13 @@ Vector::Vector(const double* const array, const unsigned int nArray)
 	setArray(array, nArray);
 }
 
+// Destructor
 Vector::~Vector()
 {
    // delete [] array_;	
 }
 
+// Class Methods
 void Vector::resize()
 {
 	double *newArray = new double[capacity_ * multiplierResize_];

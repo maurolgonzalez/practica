@@ -62,30 +62,30 @@ void queuetest::testEnqueue()
 
 void queuetest::testFullEnqueue() 
 {
-    newSize_ = 100;
-    Queue queue = Queue(newSize);
+    unsigned int newSize_ = 100;
+    Queue queue = Queue(newSize_);
     
     // delete original array
     delete [] myArray_;
     
-    myArray_ = new double [newSize];
+    myArray_ = new double [newSize_];
     
-    for (unsigned int i = 0; i < newSize; i++){
+    for (unsigned int i = 0; i < newSize_; i++){
         myArray_[i] = static_cast<double>(i);
         queue.enqueue(myArray_[i]);
     }
     
     // enqueue and dequeue till we get the original queue
-    for (unsigned int i = 0; i < newSize; i++){
-        int value = queue.dequeue();
+    for (unsigned int i = 0; i < newSize_; i++){
+        double value = queue.dequeue();
         queue.enqueue(value);
     }
     
-    double* array = new double [newSize];
+    double* array = new double [newSize_];
     array  = getArrayAux(queue);
     
     bool ans = true;
-    for (unsigned int i = 0; i < newSize; i++){
+    for (unsigned int i = 0; i < newSize_; i++){
         ans = ans && (myArray_[i] == array[i]);
     }
     
@@ -136,10 +136,10 @@ double* queuetest::getArrayAux(Queue& queue)
     
     switch(vector_getter_defined){
         case 0:
-            array = queue.getArray();
+            //array = queue.getArray();
             break;
         case 1:
-            queue.getArray(array);
+            //queue.getArray(array);
             break;
         case 2:
             break;

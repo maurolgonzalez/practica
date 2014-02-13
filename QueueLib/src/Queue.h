@@ -56,11 +56,11 @@ public:
      * @return ??
      * @warning CHOOSE ONE AND ONLY ONE OF THE DEFINITIONS BELOW
      */
-    double* getArray();
+    //double* getArray();
     //or
     //void getArray(double *array);
     //or
-    //Vector getArray();
+    Vector getVector();
 
     //add here whatever you want
     

@@ -125,7 +125,7 @@ private:
 
     double* array_;
     unsigned int size_;
-    // Max number of element that can be allocated before need resize
+    // Maximum number of items that can be assigned before it is necessary to change the size
     unsigned int capacity_;
     
 	//add here whatever you want
@@ -133,6 +133,9 @@ private:
 	// This is the factor used when need resize the array
 	static const unsigned int multiplierResize_ = 10;
 
+    /**
+     * Resize the array 
+     */
 	void resize();
 };
 
