@@ -30,7 +30,7 @@ Vector::Vector(const double* const array, const unsigned int nArray)
 // Destructor
 Vector::~Vector()
 {
-   // delete [] array_;	
+    delete [] array_;	
 }
 
 // Class Methods
@@ -44,7 +44,7 @@ void Vector::resize()
 	array_ = newArray;
 }
 
-void Vector::set(double elem, unsigned int pos) //TODO: can do an insert?
+void Vector::set(double elem, unsigned int pos)
 {    
     array_[pos] = elem;    
 }
@@ -68,10 +68,8 @@ void Vector::setArray(const double* const array, const unsigned int nArray) //TO
     }*/
 
 	array_ = new double[nArray];	
-	for(unsigned int i = 0; i < nArray; i++)
-	{		
-        set(array[i], i);
-	}
+
+    memcpy( array_, array, nArray * sizeof(double) );   
 
 	size_ = nArray;
     capacity_ = nArray;
@@ -82,23 +80,23 @@ double Vector::get(unsigned int pos) const
     return array_[pos];
 }
 
-Vector operator+(const Vector& v, const Vector& w)
+Vector& Vector::operator+(const Vector& v)
 {
     // Here i can throw an Exception instead add vectors with different size
-    unsigned int maxSize = v.getSize() > w.getSize()? v.getSize() : w.getSize();
-
-    Vector newVector(maxSize);
+    unsigned int maxSize = v.getSize() > this->getSize()? v.getSize() : this->getSize();
+    
+    Vector *newVector = new Vector(maxSize);
 
     double valueV = 0.0, valueW = 0.0;
     for(unsigned int i = 0; i < maxSize; i++)
     {        
         valueV = i < v.getSize()? v.get(i) : 0.0;        
-        valueW = i < w.getSize()? w.get(i) : 0.0;
+        valueW = i < this->getSize()? this->get(i) : 0.0;
 
-        newVector.set(valueV + valueW, i);
+        newVector->set(valueV + valueW, i);
     }    
     
-    return newVector;
+    return *newVector;
 }
 
 void Vector::push_back(const double elem)
@@ -125,13 +123,12 @@ std::string Vector::toString()
     s << "[";
 
     for(unsigned int i = 0; i < getSize(); i++)
-    {
-        
+    {        
         s << get(i);
         if(i != getSize() -1)
-            s << ", ";
-        
+            s << ", ";        
     }
+
     s << "]";
     result = s.str();
     return result;

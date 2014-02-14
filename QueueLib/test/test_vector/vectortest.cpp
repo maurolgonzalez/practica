@@ -44,7 +44,7 @@ void vectortest::testVector()
 {
     Vector v(myArray_, nMyArray_);
     
-    double* array = new double [nMyArray_];
+    double* array;// = new double [nMyArray_]; [Mauro] Not need create new if i get it later.
     array = getArrayAux(v);
     
     bool ans = true;
@@ -53,7 +53,7 @@ void vectortest::testVector()
     }
     
     // delete the array just created
-    delete [] array;	
+    // delete [] array;	[Mauro] Not need delete this pointer, it will be delete in his destructor
     
     CPPUNIT_ASSERT(ans);
 }
@@ -63,7 +63,7 @@ void vectortest::testAddition()
 {
     Vector v(myArray_, nMyArray_);
     Vector w(mySecondArray_, nMyArray_);
-    double* array = new double [nMyArray_];
+    double* array;// = new double [nMyArray_]; [Mauro] Not need create new if i get it later.
     Vector vector;
     
     if (add_vectors_defined == 0){
@@ -77,7 +77,7 @@ void vectortest::testAddition()
     for (unsigned int i = 0; i < nMyArray_; i++){
         ans = ans && (myArray_[i] + mySecondArray_[i] == array[i]);
     }
-    delete [] array;
+    //delete [] array; [Mauro] Not need delete this pointer, it will be delete in his destructor
     
     CPPUNIT_ASSERT(ans);
 }
@@ -109,14 +109,14 @@ void vectortest::testSetArray()
     Vector v(singleArray, nSingleArray);
     v.setArray(myArray_, nMyArray_);
     
-    double* array = new double [nSingleArray];
+    double* array;// = new double [nSingleArray]; [Mauro] Not need create new if i get it later.
     array = getArrayAux(v);
     
     bool ans = true;
     for (unsigned int i = 0; i < nMyArray_; i++){
         ans = ans && (myArray_[i] == array[i]);
     }
-    delete [] array;
+    //delete [] array; [Mauro] Not need delete this pointer, it will be delete in his destructor
     
     CPPUNIT_ASSERT(ans);
 }

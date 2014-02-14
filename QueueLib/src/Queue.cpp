@@ -19,7 +19,7 @@ Queue::Queue(unsigned int length)
 // Destructor
 Queue::~Queue()
 {
-    //TODO: clean class
+    delete queue;
 }
 
 // Class Methods
