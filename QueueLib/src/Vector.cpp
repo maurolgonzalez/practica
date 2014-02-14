@@ -12,7 +12,7 @@ Vector::Vector()
 Vector::Vector(unsigned int n)
 {
 	array_ = new double[n];	
-	size_ = n;
+	size_ = 0;
     capacity_ = n;
 }
 
@@ -66,7 +66,7 @@ void Vector::setArray(const double* const array, const unsigned int nArray) //TO
         delete [] array_;
         array_ = NULL;
     }*/
-
+    //delete [] array_;
 	array_ = new double[nArray];	
 
     memcpy( array_, array, nArray * sizeof(double) );   
@@ -97,6 +97,16 @@ Vector& Vector::operator+(const Vector& v)
     }    
     
     return *newVector;
+}
+
+Vector& Vector::operator=(const Vector& other)
+{
+    if (this == &other)     
+        return *this; 
+    
+    this->setArray(other.getArray(), other.getSize());
+
+    return *this;
 }
 
 void Vector::push_back(const double elem)

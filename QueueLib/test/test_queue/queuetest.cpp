@@ -47,7 +47,7 @@ void queuetest::testEnqueue()
         queue.enqueue(myArray_[i]);
     }
     
-    double* array = new double [nMyArray_];
+    double* array;// = new double [nMyArray_];
     array  = getArrayAux(queue);
     
     bool ans = true;
@@ -55,7 +55,7 @@ void queuetest::testEnqueue()
         ans = ans && (myArray_[i] == array[i]);
     }
     // add delete
-    delete [] array;
+    //delete [] array;
     
     CPPUNIT_ASSERT(ans);
 }
@@ -81,7 +81,7 @@ void queuetest::testFullEnqueue()
         queue.enqueue(value);
     }
     
-    double* array = new double [newSize_];
+    double* array;// = new double [newSize_];
     array  = getArrayAux(queue);
     
     bool ans = true;
@@ -90,7 +90,7 @@ void queuetest::testFullEnqueue()
     }
     
     // delete array
-    delete [] array;
+    //delete [] array;
     
     CPPUNIT_ASSERT(ans);
 }
@@ -136,7 +136,7 @@ double* queuetest::getArrayAux(Queue& queue)
     
     switch(vector_getter_defined){
         case 0:
-            //array = queue.getArray();
+            array = queue.getArray();
             break;
         case 1:
             //queue.getArray(array);
@@ -144,8 +144,8 @@ double* queuetest::getArrayAux(Queue& queue)
         case 2:
             break;
         case 3: 
-            Vector v = queue.getVector();
-            array = vectortest::getArrayAux(v);
+            //Vector v = queue.getVector();
+            //array = vectortest::getArrayAux(v);
             break;
     }
     

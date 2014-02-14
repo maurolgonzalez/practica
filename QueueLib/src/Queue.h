@@ -3,7 +3,7 @@
 
 #include "Vector.h"
 
-const int vector_getter_defined = 3; //this is just to be used for unit testing.
+const int vector_getter_defined = 0; //this is just to be used for unit testing.
 
 
 /**
@@ -38,7 +38,7 @@ public:
      * @warning should it be virtual?
      * @Answer: It is not necessary, it is only important when the Queue class will be inherited by another class (not this case).
      */
-    virtual ~Queue();
+    /*virtual*/ ~Queue();
 
     /**
      * Enqueue an element (append it to the end of the queue)
@@ -58,14 +58,14 @@ public:
      * @return ??
      * @warning CHOOSE ONE AND ONLY ONE OF THE DEFINITIONS BELOW
      */
-    //double* getArray();
+    double* getArray();
     //or
     //void getArray(double *array);
     //or
-    Vector getVector() const;
+    //Vector getVector() const;
 
     //add here whatever you want
-    
+    Queue& operator=(const Queue& other);
 private:
 
     Vector *queue;

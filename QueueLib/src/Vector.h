@@ -126,6 +126,7 @@ class Vector
      */
     double pop_front();
 
+    Vector& operator=(const Vector& other);
 private:
 
     double* array_;
