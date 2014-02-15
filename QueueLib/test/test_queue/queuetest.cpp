@@ -47,7 +47,7 @@ void queuetest::testEnqueue()
         queue.enqueue(myArray_[i]);
     }
     
-    double* array;// = new double [nMyArray_];
+    double* array;// = new double [nMyArray_];[Mauro] Not need create new if i get it later.
     array  = getArrayAux(queue);
     
     bool ans = true;
@@ -55,7 +55,7 @@ void queuetest::testEnqueue()
         ans = ans && (myArray_[i] == array[i]);
     }
     // add delete
-    //delete [] array;
+    delete [] array;
     
     CPPUNIT_ASSERT(ans);
 }
@@ -81,7 +81,7 @@ void queuetest::testFullEnqueue()
         queue.enqueue(value);
     }
     
-    double* array;// = new double [newSize_];
+    double* array;// = new double [newSize_]; [Mauro] Not need create new if i get it later.
     array  = getArrayAux(queue);
     
     bool ans = true;
@@ -90,7 +90,7 @@ void queuetest::testFullEnqueue()
     }
     
     // delete array
-    //delete [] array;
+    delete [] array;
     
     CPPUNIT_ASSERT(ans);
 }
@@ -106,7 +106,7 @@ void queuetest::testDequeue()
     double first = queue.dequeue();
     bool ans = (first == myArray_[0]);
     
-    double* array = new double [nMyArray_];
+    double* array;// = new double [nMyArray_]; [Mauro] Not need create new if i get it later.
     array = getArrayAux(queue);
     for (unsigned int i = 0; i < nMyArray_-1; i++){
         ans = ans && (myArray_[i + 1] == array[i]);

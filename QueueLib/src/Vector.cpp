@@ -77,17 +77,21 @@ unsigned int Vector::getSize() const
 
 double* Vector::getArray() const
 {
-	return array_;
+	double* newArray = new double[size_];
+
+    unsigned int currentPos = first_;
+    for(unsigned int i = 0; i < getSize(); i++)
+    {        
+        newArray[i] = get(currentPos++);
+        if(currentPos > capacity_)
+            currentPos = 0;       
+    }
+
+    return newArray;
 }
 
 void Vector::setArray(const double* const array, const unsigned int nArray) //TODO: Improve
-{    
-    /*if(array_ != NULL)
-    {
-        delete [] array_;
-        array_ = NULL;
-    }*/
-    //delete [] array_;
+{ 
 	array_ = new double[nArray];	
 
     memcpy( array_, array, nArray * sizeof(double) );
@@ -165,11 +169,6 @@ double Vector::pop_back()
 
 double Vector::pop_front()
 {
-    /*double frontElement = array_[0];
-    array_++;
-    size_--;
-    return frontElement;*/
-
     double frontElement = array_[first_];
     array_[first_++] = 0.0;
 

@@ -53,7 +53,7 @@ void vectortest::testVector()
     }
     
     // delete the array just created
-    // delete [] array;	[Mauro] Not need delete this pointer, it will be delete in his destructor
+     delete [] array;
     
     CPPUNIT_ASSERT(ans);
 }
@@ -77,7 +77,7 @@ void vectortest::testAddition()
     for (unsigned int i = 0; i < nMyArray_; i++){
         ans = ans && (myArray_[i] + mySecondArray_[i] == array[i]);
     }
-    //delete [] array; [Mauro] Not need delete this pointer, it will be delete in his destructor
+    delete [] array;
     
     CPPUNIT_ASSERT(ans);
 }
@@ -116,7 +116,7 @@ void vectortest::testSetArray()
     for (unsigned int i = 0; i < nMyArray_; i++){
         ans = ans && (myArray_[i] == array[i]);
     }
-    //delete [] array; [Mauro] Not need delete this pointer, it will be delete in his destructor
+    delete [] array;
     
     CPPUNIT_ASSERT(ans);
 }
