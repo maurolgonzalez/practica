@@ -8,7 +8,7 @@ Vector::Vector()
 	size_ = 0;
     capacity_ = 0;
     first_ = 0;
-    last_ = size_;
+    last_ = -1;
 }
 
 Vector::Vector(unsigned int n)
@@ -182,6 +182,16 @@ double Vector::pop_front()
 bool Vector::isEmpty()
 {
     return size_ == 0;
+}
+
+void Vector::clear()
+{
+    delete [] array_;
+    array_ = NULL;
+	size_ = 0;
+    capacity_ = 0;
+    first_ = 0;
+    last_ = -1;
 }
 
 std::string Vector::toString()

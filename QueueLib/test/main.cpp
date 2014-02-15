@@ -1,31 +1,50 @@
 #include "vector.h"
 #include <iostream>
 #include <queue>
+#include <time.h> 
 using namespace std;
 
 int main()
 {
     Vector v, w;
-    for(int i =0; i < 3; i++)
-    {       
-        v.push_back(i);
-    }
+    
+    clock_t init, parcial, promedio = 0;
 
-    w = v;
+    init=clock();
+    //
+    // do stuff
+    //
+    int ejecuciones = 1;
 
-    cout << v.toString() << endl;
-    while(v.isEmpty() == false)
+    for(int j=0; j < ejecuciones; j++)
     {
-        cout << v.pop_back() << endl;
+        //Vector v;
+        init=clock();
+        for(int i =0; i < 50*1000000; i++)
+        {       
+            v.push_back(i);
+            /*if(i%1000 == 0)
+            cout << i << endl;*/
+        }
+        parcial=clock()-init;
+        cout <<parcial << endl;
+        promedio += parcial;
     }
-    cout << v.toString() << endl;
-    /*cout << v.pop_front() << endl;
-    cout << v.pop_front() << endl;
-    cout << v.pop_front() << endl;*/
-
-    //cout << v.toString() << endl;
+    //w = v;
+    cout <<"Promedio: " << promedio/ejecuciones << endl;
+    string s;
+    
+    cin >> s;
+    
 
     
+
+    /*while(v.isEmpty() == false)
+    {
+        cout << v.pop_back() << endl;
+    }*/
+    
+        
     /*for(int i = 0; i < 105; i++)
     {
         v.push_back(i);

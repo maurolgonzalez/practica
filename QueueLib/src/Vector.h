@@ -128,23 +128,27 @@ class Vector
     double pop_front();
     bool isEmpty();
 
+    void clear();
+
     Vector& operator=(const Vector& other);
 private:
 
     double* array_;
-    unsigned int size_;
-    // Maximum number of items that can be assigned before it is necessary to change the size
-    unsigned int capacity_;
-    unsigned int first_;
-    unsigned int last_;
+    unsigned int size_;  
     
 	//add here whatever you want
-	static const unsigned int initialSize_ = 10;
-	// This is the factor used when need resize the array
-	static const unsigned int multiplierResize_ = 10;
+
+	// This is the factor used when need resize the vector
+	static const unsigned int multiplierResize_ = 4;
+    // Maximum number of items that can be assigned before it is necessary to change the size
+    unsigned int capacity_;
+    // Position of the first element in vector
+    unsigned int first_;
+    // Position of the last element in vector
+    unsigned int last_;
 
     /**
-     * Resize the array 
+     * Resize the vector 
      */
 	void resize();
 };
