@@ -1,19 +1,25 @@
 #include "Vector.h"
 #include <sstream>  
-
+#include <iostream> // TODO: Remove
 // Constructors
 Vector::Vector()
-{
-	array_ = new double[initialSize_];
-	capacity_ = initialSize_;
-    size_ = 0;
+{	
+    array_ = NULL;
+	size_ = 0;
+    capacity_ = 0;
+    first_ = 0;
+    last_ = size_;
 }
 
 Vector::Vector(unsigned int n)
 {
 	array_ = new double[n];	
-	size_ = 0;
+    for(unsigned int i=0; i < n; i++)
+        array_[i] = 0.0;
+	size_ = n;
     capacity_ = n;
+    first_ = 0;
+    last_ = size_;
 }
 
 Vector::Vector(const Vector &v)
@@ -35,18 +41,33 @@ Vector::~Vector()
 
 // Class Methods
 void Vector::resize()
-{
-	double *newArray = new double[capacity_ * multiplierResize_];
-	memcpy( newArray, array_, size_ * sizeof(double) );
+{//std::cout << toString() << std::endl;
+    unsigned int newCapacity = (capacity_ <= 0? 1: capacity_) * multiplierResize_;
+	double *newArray = new double[newCapacity];
+	//memcpy( newArray, array_, size_ * sizeof(double) );
+    
+    unsigned int currentPos = first_;
+    double currentElement = 0.0;
+    for(unsigned int i = 0; i < getSize(); i++)
+    {        
+        currentElement = get(currentPos++);
+        newArray[i] = currentElement;
+        if(currentPos > capacity_)
+            currentPos = 0;       
+    }
 
-	capacity_ = capacity_ * multiplierResize_;    
+
+	capacity_ = newCapacity;    
 	delete [] array_;
 	array_ = newArray;
+    first_ = 0;
+    last_ = size_ == 0? -1: size_-1;
+    //std::cout << toString() << std::endl;
 }
 
 void Vector::set(double elem, unsigned int pos)
-{    
-    array_[pos] = elem;    
+{   //TODO: Throw exception pos > size 
+    array_[pos] = elem; 
 }
 
 unsigned int Vector::getSize() const
@@ -69,10 +90,12 @@ void Vector::setArray(const double* const array, const unsigned int nArray) //TO
     //delete [] array_;
 	array_ = new double[nArray];	
 
-    memcpy( array_, array, nArray * sizeof(double) );   
-
+    memcpy( array_, array, nArray * sizeof(double) );
+    
 	size_ = nArray;
     capacity_ = nArray;
+    first_ = 0;
+    last_ = size_;
 }
 
 double Vector::get(unsigned int pos) const
@@ -115,15 +138,51 @@ void Vector::push_back(const double elem)
     {
         resize();
     }
-    array_[size_++] = elem;
+
+    if(&array_[last_] == &array_[capacity_])
+    {
+        last_ = 0;
+    }
+    else
+    {
+        last_++;
+    } 
+
+    array_[last_] = elem; 
+    size_++;
+
+     
+}
+
+double Vector::pop_back()
+{
+    double lastElement = array_[last_--];
+    if(last_ < 0)
+        last_ = capacity_;
+    size_--;
+    return lastElement;
 }
 
 double Vector::pop_front()
 {
-    double frontElement = array_[0];
+    /*double frontElement = array_[0];
     array_++;
     size_--;
+    return frontElement;*/
+
+    double frontElement = array_[first_];
+    array_[first_++] = 0.0;
+
+    size_--;
+    if(first_ > capacity_)
+        first_ = 0;
+
     return frontElement;
+}
+
+bool Vector::isEmpty()
+{
+    return size_ == 0;
 }
 
 std::string Vector::toString()
@@ -132,9 +191,13 @@ std::string Vector::toString()
     std::ostringstream s;
     s << "[";
 
+    unsigned int firstElement = first_;
     for(unsigned int i = 0; i < getSize(); i++)
     {        
-        s << get(i);
+        s << get(firstElement++);
+        if(firstElement > capacity_)
+            firstElement = 0;
+
         if(i != getSize() -1)
             s << ", ";        
     }

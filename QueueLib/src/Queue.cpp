@@ -3,7 +3,7 @@
 // Constructors
 Queue::Queue()
 {
-    queue = new Vector();
+    queue = new Vector();    
 }
 
 Queue::Queue(const Queue &q)

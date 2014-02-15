@@ -121,10 +121,12 @@ class Vector
     void push_back(double elem);
 
     /**
-     * Get first element and remove it from vector    
+     * Get last element and remove it from vector    
      * @return first element
      */
+    double pop_back();
     double pop_front();
+    bool isEmpty();
 
     Vector& operator=(const Vector& other);
 private:
@@ -133,6 +135,8 @@ private:
     unsigned int size_;
     // Maximum number of items that can be assigned before it is necessary to change the size
     unsigned int capacity_;
+    unsigned int first_;
+    unsigned int last_;
     
 	//add here whatever you want
 	static const unsigned int initialSize_ = 10;
