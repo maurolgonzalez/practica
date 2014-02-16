@@ -15,13 +15,33 @@ void TestGetArray()
     {
         Vector v;
         
-        for(int i =0; i < 20*1000000; i++)
+        for(int i =0; i < 1*1000000; i++)
         {       
             v.push_back(i);
-
         }
         init=clock();
+        v.pop_front();
+        v.pop_front();
+        v.pop_front();
+        v.pop_front();
+        v.pop_back();
+        v.pop_back();
+        v.pop_back();
         double * newArray = v.getArray();
+
+        int pos = 0;
+        while(v.isEmpty() == false)
+        {      
+            double vectorElement = v.pop_front();
+            double arrayElement = newArray[pos++];
+            if( vectorElement != arrayElement)
+            {
+                cout << "ERROR: no son iguales" << endl;
+                break;
+            }
+                
+        }
+
         parcial=clock()-init;
         cout <<parcial << endl;
         promedio += parcial;
@@ -32,11 +52,17 @@ void TestGetArray()
 
 }
 
+void TestQueue()
+{
+
+}
+
 int main()
 {
     Vector v, w;
     
     TestGetArray();
+    TestQueue();
 
     /*clock_t init, parcial, promedio = 0;
 
