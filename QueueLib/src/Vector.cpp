@@ -1,7 +1,7 @@
 #include "Vector.h"
 #include <sstream>  
-#include <iostream> // TODO: Remove
-// Constructors
+
+///////////////////////////// Constructors ////////////////////////////////////
 Vector::Vector()
 {	
     array_ = NULL;
@@ -10,7 +10,7 @@ Vector::Vector()
     first_ = 0;
     last_ = -1;
 }
-
+/*****************************************************************************/
 Vector::Vector(unsigned int n)
 {
 	array_ = new double[n];	
@@ -21,30 +21,29 @@ Vector::Vector(unsigned int n)
     first_ = 0;
     last_ = size_;
 }
-
+/*****************************************************************************/
 Vector::Vector(const Vector &v)
 {
     setArray(v.getArray(), v.getSize());
 }
-
+/*****************************************************************************/
 Vector::Vector(const double* const array, const unsigned int nArray)
 {
     array_ = NULL;
 	setArray(array, nArray);
 }
 
-// Destructor
+///////////////////////////// Destructor ////////////////////////////////////
 Vector::~Vector()
 {
     delete [] array_;	
 }
 
-// Class Methods
+///////////////////////////// Class Methods ////////////////////////////////////
 void Vector::resize()
-{//std::cout << toString() << std::endl;
+{
     unsigned int newCapacity = (capacity_ <= 0? 1: capacity_) * multiplierResize_;
 	double *newArray = new double[newCapacity];
-	//memcpy( newArray, array_, size_ * sizeof(double) );
     
     unsigned int currentPos = first_;
     double currentElement = 0.0;
@@ -62,20 +61,29 @@ void Vector::resize()
 	array_ = newArray;
     first_ = 0;
     last_ = size_ == 0? -1: size_-1;
-    //std::cout << toString() << std::endl;
 }
-
+/*****************************************************************************/
 void Vector::set(double elem, unsigned int pos)
-{   //TODO: Throw exception pos > size 
-    //TODO: usar dinamicamente
-    array_[pos] = elem; 
-}
+{   
+    if( pos < 0 || size_ <= pos)
+    {
+        throw std::out_of_range ("Index out of range");
+    }
 
+    unsigned int newPos = first_ + pos;
+    if(newPos >= capacity_)
+    {
+        newPos = capacity_ - (newPos);
+    }
+
+    array_[newPos] = elem; 
+}
+/*****************************************************************************/
 unsigned int Vector::getSize() const
 {
     return size_;
 }
-
+/*****************************************************************************/
 double* Vector::getArray() const
 {
 	double* newArray = new double[size_];
@@ -87,9 +95,10 @@ double* Vector::getArray() const
 
     return newArray;
 }
-
-void Vector::setArray(const double* const array, const unsigned int nArray) //TODO: Improve
+/*****************************************************************************/
+void Vector::setArray(const double* const array, const unsigned int nArray)
 { 
+    delete [] array_;
 	array_ = new double[nArray];	
 
     memcpy( array_, array, nArray * sizeof(double) );
@@ -99,10 +108,10 @@ void Vector::setArray(const double* const array, const unsigned int nArray) //TO
     first_ = 0;
     last_ = size_;
 }
-
+/*****************************************************************************/
 double Vector::get(unsigned int pos) const
 {
-    if( 0 > pos || pos >= size_)
+    if( pos < 0 || size_ <= pos)
     {
         throw std::out_of_range ("Index out of range");
     }
@@ -115,7 +124,7 @@ double Vector::get(unsigned int pos) const
 
     return array_[newPos];
 }
-
+/*****************************************************************************/
 Vector& Vector::operator+(const Vector& v)
 {
     // Here i can throw an Exception instead add vectors with different size
@@ -134,7 +143,7 @@ Vector& Vector::operator+(const Vector& v)
     
     return *newVector;
 }
-
+/*****************************************************************************/
 Vector& Vector::operator=(const Vector& other)
 {
     if (this == &other)     
@@ -144,7 +153,7 @@ Vector& Vector::operator=(const Vector& other)
 
     return *this;
 }
-
+/*****************************************************************************/
 void Vector::push_back(const double elem)
 {
     if(size_  + 1 >= (capacity_))
@@ -163,10 +172,8 @@ void Vector::push_back(const double elem)
 
     array_[last_] = elem; 
     size_++;
-
-     
 }
-
+/*****************************************************************************/
 double Vector::pop_back()
 {
     double lastElement = array_[last_--];
@@ -175,7 +182,7 @@ double Vector::pop_back()
     size_--;
     return lastElement;
 }
-
+/*****************************************************************************/
 double Vector::pop_front()
 {
     double frontElement = array_[first_];
@@ -187,12 +194,12 @@ double Vector::pop_front()
 
     return frontElement;
 }
-
+/*****************************************************************************/
 bool Vector::isEmpty()
 {
     return size_ == 0;
 }
-
+/*****************************************************************************/
 void Vector::clear()
 {
     delete [] array_;
@@ -202,7 +209,7 @@ void Vector::clear()
     first_ = 0;
     last_ = -1;
 }
-
+/*****************************************************************************/
 std::string Vector::toString()
 {
     std::string result = "";
@@ -221,7 +228,7 @@ std::string Vector::toString()
     result = s.str();
     return result;
 }
-
+/*****************************************************************************/
 double dotProduct(const Vector& v, const Vector& w)
 {	
     if(v.getSize() != w.getSize())

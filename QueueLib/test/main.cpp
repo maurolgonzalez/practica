@@ -4,10 +4,40 @@
 #include <time.h> 
 using namespace std;
 
+void TestGetArray()
+{    
+    
+    clock_t init, parcial, promedio = 0;
+
+    init=clock();
+    int ejecuciones = 2;
+    for(int j=0; j < ejecuciones; j++)
+    {
+        Vector v;
+        
+        for(int i =0; i < 20*1000000; i++)
+        {       
+            v.push_back(i);
+
+        }
+        init=clock();
+        double * newArray = v.getArray();
+        parcial=clock()-init;
+        cout <<parcial << endl;
+        promedio += parcial;
+    }
+
+    cout <<"Promedio: " << promedio/ejecuciones << endl;
+
+
+}
+
 int main()
 {
     Vector v, w;
     
+    TestGetArray();
+
     /*clock_t init, parcial, promedio = 0;
 
     init=clock();
@@ -31,7 +61,7 @@ int main()
     
     cin >> s;*/
     
-    for(int i =0; i < 3; i++)
+    /*for(int i =0; i < 3; i++)
         {       
             v.push_back(i);
         }
@@ -44,8 +74,9 @@ int main()
     cout << v.toString() << endl;
     v.push_back(5);
     cout << v.toString() << endl;
-    cout << v.get(1) << endl;    
-    cout << v.toString() << endl;
+    cout << v.get(1) << endl; 
+    v.set(15.0, 1);
+    cout << v.toString() << endl;*/
 
     /*while(v.isEmpty() == false)
     {
@@ -66,3 +97,4 @@ int main()
     cout << v.toString();*/
     return 0;
 }
+

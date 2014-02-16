@@ -125,9 +125,22 @@ class Vector
      * @return first element
      */
     double pop_back();
+
+    /**
+     * Get first element and remove it from vector    
+     * @return first element
+     */
     double pop_front();
+
+    /**
+     * Check is vector is empty   
+     * @return true if vector is empty, else false
+     */
     bool isEmpty();
 
+    /**
+     * Removes all elements from the vector, leaving the container with a size of 0. 
+     */
     void clear();
 
     Vector& operator=(const Vector& other);
