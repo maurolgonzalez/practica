@@ -8,14 +8,10 @@ int main()
 {
     Vector v, w;
     
-    clock_t init, parcial, promedio = 0;
+    /*clock_t init, parcial, promedio = 0;
 
     init=clock();
-    //
-    // do stuff
-    //
     int ejecuciones = 1;
-
     for(int j=0; j < ejecuciones; j++)
     {
         //Vector v;
@@ -23,21 +19,33 @@ int main()
         for(int i =0; i < 50*1000000; i++)
         {       
             v.push_back(i);
-            /*if(i%1000 == 0)
-            cout << i << endl;*/
+
         }
         parcial=clock()-init;
         cout <<parcial << endl;
         promedio += parcial;
     }
-    //w = v;
+
     cout <<"Promedio: " << promedio/ejecuciones << endl;
     string s;
     
-    cin >> s;
+    cin >> s;*/
     
-
-    
+    for(int i =0; i < 3; i++)
+        {       
+            v.push_back(i);
+        }
+    cout << v.toString() << endl;
+    v.pop_front();
+    cout << v.toString() << endl;
+    v.pop_front();
+    cout << v.toString() << endl;
+    v.push_back(4);
+    cout << v.toString() << endl;
+    v.push_back(5);
+    cout << v.toString() << endl;
+    cout << v.get(1) << endl;    
+    cout << v.toString() << endl;
 
     /*while(v.isEmpty() == false)
     {

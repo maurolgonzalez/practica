@@ -67,6 +67,7 @@ void Vector::resize()
 
 void Vector::set(double elem, unsigned int pos)
 {   //TODO: Throw exception pos > size 
+    //TODO: usar dinamicamente
     array_[pos] = elem; 
 }
 
@@ -78,13 +79,10 @@ unsigned int Vector::getSize() const
 double* Vector::getArray() const
 {
 	double* newArray = new double[size_];
-
-    unsigned int currentPos = first_;
+    
     for(unsigned int i = 0; i < getSize(); i++)
     {        
-        newArray[i] = get(currentPos++);
-        if(currentPos > capacity_)
-            currentPos = 0;       
+        newArray[i] = get(i);             
     }
 
     return newArray;
@@ -104,7 +102,18 @@ void Vector::setArray(const double* const array, const unsigned int nArray) //TO
 
 double Vector::get(unsigned int pos) const
 {
-    return array_[pos];
+    if( 0 > pos || pos >= size_)
+    {
+        throw std::out_of_range ("Index out of range");
+    }
+
+    unsigned int newPos = first_ + pos;
+    if(newPos >= capacity_)
+    {
+        newPos = capacity_ - (newPos);
+    }
+
+    return array_[newPos];
 }
 
 Vector& Vector::operator+(const Vector& v)
@@ -143,7 +152,7 @@ void Vector::push_back(const double elem)
         resize();
     }
 
-    if(&array_[last_] == &array_[capacity_])
+    if(&array_[last_] == &array_[capacity_ - 1])
     {
         last_ = 0;
     }
@@ -200,12 +209,9 @@ std::string Vector::toString()
     std::ostringstream s;
     s << "[";
 
-    unsigned int firstElement = first_;
     for(unsigned int i = 0; i < getSize(); i++)
-    {        
-        s << get(firstElement++);
-        if(firstElement > capacity_)
-            firstElement = 0;
+    { 
+        s << get(i);        
 
         if(i != getSize() -1)
             s << ", ";        
@@ -220,7 +226,7 @@ double dotProduct(const Vector& v, const Vector& w)
 {	
     if(v.getSize() != w.getSize())
     {
-        throw new std::exception("Length of vertors cannot be different for Dot Product");
+        throw std::exception("Length of vertors cannot be different for Dot Product");
     }
 
     double result = 0.0;
