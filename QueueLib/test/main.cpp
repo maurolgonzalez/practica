@@ -52,17 +52,19 @@ void TestGetArray()
 
 }
 
-void TestQueue()
+void TestPopFront()
 {
+    Vector v;
 
+    v.pop_front();
 }
 
 int main()
 {
     Vector v, w;
     
-    TestGetArray();
-    TestQueue();
+    //TestGetArray();
+    TestPopFront();
 
     /*clock_t init, parcial, promedio = 0;
 

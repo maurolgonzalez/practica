@@ -45,14 +45,22 @@ void Vector::resize()
     unsigned int newCapacity = (capacity_ <= 0? 1: capacity_) * multiplierResize_;
 	double *newArray = new double[newCapacity];
     
-    unsigned int currentPos = first_;
-    double currentElement = 0.0;
-    for(unsigned int i = 0; i < getSize(); i++)
-    {        
-        currentElement = get(currentPos++);
-        newArray[i] = currentElement;
-        if(currentPos > capacity_)
-            currentPos = 0;       
+    try
+    {
+        unsigned int currentPos = first_;
+        double currentElement = 0.0;
+        for(unsigned int i = 0; i < getSize(); i++)
+        {        
+            currentElement = get(currentPos++);
+            newArray[i] = currentElement;
+            if(currentPos > capacity_)
+                currentPos = 0;       
+        }
+    }
+    catch(std::exception e)
+    {
+        delete [] newArray;
+        throw e;
     }
 
 
@@ -101,8 +109,16 @@ void Vector::setArray(const double* const array, const unsigned int nArray)
     delete [] array_;
 	array_ = new double[nArray];	
 
-    memcpy( array_, array, nArray * sizeof(double) );
-    
+    try
+    {
+        memcpy( array_, array, nArray * sizeof(double) );    
+    }
+    catch(std::exception e)
+    {
+        delete [] array_;
+        throw e;
+    }
+
 	size_ = nArray;
     capacity_ = nArray;
     first_ = 0;
@@ -176,6 +192,11 @@ void Vector::push_back(const double elem)
 /*****************************************************************************/
 double Vector::pop_back()
 {
+    if(size_ <= 0)
+    {
+        throw std::exception("The Vector is Empty.");
+    }
+
     double lastElement = array_[last_--];
     if(last_ < 0)
         last_ = capacity_;
@@ -185,6 +206,11 @@ double Vector::pop_back()
 /*****************************************************************************/
 double Vector::pop_front()
 {
+    if(size_ <= 0)
+    {
+        throw std::exception("The Vector is Empty.");
+    }
+
     double frontElement = array_[first_];
     array_[first_++] = 0.0;
 
