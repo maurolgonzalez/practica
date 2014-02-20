@@ -9,15 +9,17 @@
 #  CPPUNIT_INCLUDE_DIR - The CppUnit include directory.
 #  CPPUNIT_LIBRARY     - The CppUnit library to link against.
 
-FIND_PATH(CPPUNIT_INCLUDE_DIR cppunit/Test.h)
-FIND_LIBRARY(CPPUNIT_LIBRARY NAMES cppunit_dll)
+FIND_PATH(CPPUNIT_INCLUDE_DIR cppunit/Test.h "${CMAKE_SOURCE_DIR}/cppunit-1.13.2/include/")
+FIND_LIBRARY(CPPUNIT_LIBRARY cppunitd HINTS "${CMAKE_SOURCE_DIR}/cppunit-1.13.2/lib/")
+
 
 IF (CPPUNIT_INCLUDE_DIR AND CPPUNIT_LIBRARY)
    SET(CPPUNIT_FOUND TRUE)
 ENDIF (CPPUNIT_INCLUDE_DIR AND CPPUNIT_LIBRARY)
 
 IF (CPPUNIT_FOUND)
-
+   include_directories(${CPPUNIT_INCLUDE_DIR})
+   link_directories("${CMAKE_SOURCE_DIR}/cppunit-1.13.2/lib/")
    # show which CppUnit was found only if not quiet
    IF (NOT CppUnit_FIND_QUIETLY)
       MESSAGE(STATUS "Found CppUnit: ${CPPUNIT_LIBRARY}")

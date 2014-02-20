@@ -18,6 +18,6 @@ ADD_EXECUTABLE(${TEST_EXECUTABLE2} ${TEST_SRCS} )
 FILE(GLOB LIBRARIES "${PROJECT_DIR}/lib/*.dll")
 TARGET_LINK_LIBRARIES(${TEST_EXECUTABLE2} ${LIBRARIES} 
     ${LIBRARY_PATHS}
-	cppunit
+	cppunitd
 )
 #------------------------------------------------------------------------------
